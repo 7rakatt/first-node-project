@@ -31,12 +31,12 @@ const upload = multer({
 
 const Router = express.Router();
 const usersController = require('../controllers/users.controller');
-Router.route("/").get(verifyToken,usersController.getAllusers);
+Router.route("/").get(usersController.getAllusers);
 Router.route("/register").post(upload.single('avatar'),usersController.register)
 Router.route("/login").post(usersController.login);
 Router.route("/:userId")
-  .get(verifyToken, usersController.getSinglecourse)
-  .delete(verifyToken,allowedTo(userRoles.ADMIN,userRoles.MANGER),usersController.deleteUser);
+  .get( usersController.getSinglecourse)
+  .delete(allowedTo(userRoles.ADMIN,userRoles.MANGER),usersController.deleteUser);
   
 
 module.exports = Router;

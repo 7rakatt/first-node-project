@@ -22,6 +22,6 @@ Router.route('/').get(coursesController.getAllcourses).post(
 Router.route("/:courseId")
   .get(coursesController.getSinglecourse)
   .patch(coursesController.editCourse)
-  .delete(verifyToken,allowedTo(userRoles.ADMIN,userRoles.MANGER),coursesController.deleteCourse);
+  .delete(allowedTo(userRoles.ADMIN,userRoles.MANGER),coursesController.deleteCourse);
 
 module.exports = Router;
